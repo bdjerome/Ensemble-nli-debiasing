@@ -117,11 +117,13 @@ python run_ensemble_debiasing.py \
 ### Evaluation
 
 #### Evaluate on HANS
+Will have to update file paths in the .py file to point to correct model files
 ```bash
 python eval_hans.py
 ```
 
 #### Evaluate on ANLI
+Will have to update file paths in the .py file to point to correct model files
 ```bash
 python eval_anli.py
 ```
