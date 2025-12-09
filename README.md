@@ -155,7 +155,7 @@ The `fp-dataset-artifacts/` directory contains the original training framework f
 
 ## Acknowledgments
 
-- Base framework adapted from University of Texas at Austin CS 378 (NLP)
+- Base framework adapted from University of Texas at Austin CS 388 (NLP)
 - HANS dataset from McCoy et al. (2019)
 - Hugging Face Transformers library
 
@@ -163,7 +163,7 @@ The `fp-dataset-artifacts/` directory contains the original training framework f
 
 This project is available under the MIT License. See individual dataset licenses for SNLI, HANS, and ANLI.
 
-## 👤 Author
+## Author
 
 Brandon Jerome
 - GitHub: [@brandonjerome](https://github.com/brandonjerome)
