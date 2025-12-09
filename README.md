@@ -1,19 +1,36 @@
-# Ensemble Debiasing for Natural Language Inference
+# Abstract
 
-A PyTorch implementation of ensemble debiasing methods for improving Natural Language Inference (NLI) model robustness against dataset artifacts and spurious correlations.
+Natural Language Inference (NLI) models 
+can achieve high accuracy for in domain 
+problems,  but  can  generalize  poorly  to 
+adversarial  settings  when  they  learn 
+embedded patterns in the training set that 
+are  not  displayed  in  a  new  test  set.  We 
+investigate  a  simple  debiased  model 
+implementation  in  conjunction  with  data 
+augmentation to improve generalization to 
+challenging  evaluation  datasets.  Our 
+technique shows modest improvements on 
+template-based  heuristic  challenges  but 
+fails  to  yield  meaningful  gains  on  more 
+complex reasoning challenges, revealing a 
+tension between mitigating known bias and 
+generating  robust  reasoning.  We  provide 
+empirical evidence and reproducible code 
+showing that suppressing artifacts alone is 
+insufficient  for  building  next  level  NLI 
+systems.
 
-## Overview
+View the full paper at ensemble_debiasing_nli_report.pdf in the repository
+
+## Methodology Overview
 
 This project implements an ensemble-based debiasing approach for NLI models that:
 - Trains a hypothesis-only "bias" model to capture dataset artifacts
 - Combines it with a full NLI model using weighted ensemble debiasing
 - Achieves significant improvements on out-of-distribution test sets (HANS)
 - Maintains strong in-distribution performance (SNLI)
-
-**Key Results:**
-- **HANS accuracy:** 100% (vs ~50% baseline)
-- **SNLI validation accuracy:** 89.3%
-- **ANLI accuracy:** 32.75% (comparable to baselines)
+- Maintains but does not improve out-of-distribution challenge set (ANLI)
 
 ## Project Structure
 
