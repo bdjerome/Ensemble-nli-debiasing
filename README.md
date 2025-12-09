@@ -2,7 +2,7 @@
 
 A PyTorch implementation of ensemble debiasing methods for improving Natural Language Inference (NLI) model robustness against dataset artifacts and spurious correlations.
 
-## 📋 Overview
+## Overview
 
 This project implements an ensemble-based debiasing approach for NLI models that:
 - Trains a hypothesis-only "bias" model to capture dataset artifacts
@@ -15,7 +15,7 @@ This project implements an ensemble-based debiasing approach for NLI models that
 - **SNLI validation accuracy:** 89.3%
 - **ANLI accuracy:** 32.75% (comparable to baselines)
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 ├── eval_hans.py                    # HANS evaluation script
@@ -23,7 +23,7 @@ This project implements an ensemble-based debiasing approach for NLI models that
 ├── run_ensemble_debiasing.py       # Main ensemble debiasing training
 ├── run_alpha_sweep.py              # Hyperparameter tuning (alpha values)
 ├── HANS_leakage_check.ipynb        # Data leakage investigation notebook
-├── paper.ipynb                     # Results analysis and visualization
+├── paper_visuals.ipynb             # Visualization used in my paper
 ├── fp-dataset-artifacts/           # Original base code
 │   ├── run.py                      # Standard NLI training
 │   ├── helpers.py                  # Utility functions
@@ -37,7 +37,7 @@ This project implements an ensemble-based debiasing approach for NLI models that
 └── results/                        # Model checkpoints and metrics
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -109,57 +109,7 @@ python eval_hans.py
 python eval_anli.py
 ```
 
-## 🔬 Methodology
-
-### Ensemble Debiasing
-
-The core debiasing approach follows:
-
-**Debiased Logits** = `Logits_main - α * Logits_bias`
-
-Where:
-- `Logits_main`: Full model (premise + hypothesis)
-- `Logits_bias`: Hypothesis-only model (captures artifacts)
-- `α`: Scaling factor (tuned via hyperparameter sweep)
-
-### Data Augmentation
-
-Models are trained on combined SNLI + HANS training data to expose them to heuristic patterns during training, following the methodology from the HANS paper (McCoy et al., 2019).
-
-### Key Features
-
-- **Dual Tokenization**: Separate preprocessing for full inputs (main model) and hypothesis-only inputs (bias model)
-- **Flexible Alpha**: Supports fixed or learnable scaling parameters
-- **Multiple Combination Modes**: Logit-space or log-probability space subtraction
-- **Apple Silicon Support**: Optimized for MPS (Metal Performance Shaders) on M1/M2/M3 Macs
-
-## 📊 Results
-
-### HANS Performance by Heuristic
-
-| Model | Lexical Overlap | Subsequence | Constituent | Overall |
-|-------|----------------|-------------|-------------|---------|
-| Baseline | 50.4% | 56.2% | 53.8% | 53.5% |
-| Hypothesis-Only | 50.8% | 50.6% | 50.2% | 50.5% |
-| **Ensemble Debiased** | **100%** | **100%** | **100%** | **100%** |
-
-### Cross-Dataset Evaluation
-
-| Model | SNLI (dev) | HANS | ANLI |
-|-------|------------|------|------|
-| Baseline | 89.1% | 53.5% | 32.1% |
-| Hypothesis-Only | 56.9% | 50.5% | 33.0% |
-| **Ensemble Debiased** | **89.3%** | **100%** | **32.8%** |
-
-## 🔍 Data Leakage Investigation
-
-Due to the exceptional 100% HANS accuracy, we conducted a thorough investigation documented in `HANS_leakage_check.ipynb`:
-
-- **Finding**: HANS train/eval sets reuse the same pairIDs (ex0-ex29999) but have completely different sentence pairs
-- **Validation**: 0 identical examples out of 30,000 overlapping IDs
-- **Conclusion**: No data leakage; results are legitimate
-
-## 📁 Repository Contents
+## Repository Contents
 
 ### Core Scripts
 
@@ -178,58 +128,19 @@ Due to the exceptional 100% HANS accuracy, we conducted a thorough investigation
 
 The `fp-dataset-artifacts/` directory contains the original training framework from the University of Texas at Austin NLP course.
 
-## 🛠️ Technical Details
-
-### Model Architecture
-
-- **Base Model**: ELECTRA-small-discriminator (Google)
-- **Task**: 3-way classification (entailment, neutral, contradiction)
-- **Framework**: Hugging Face Transformers + PyTorch
-
-### Hardware Requirements
-
-- **GPU**: Recommended (CUDA or Apple MPS)
-- **RAM**: 16GB minimum
-- **Storage**: ~10GB for datasets and model checkpoints
-
-### Hyperparameters
-
-```python
-# Optimal configuration
-ALPHA = 0.5                  # Ensemble debiasing weight
-BATCH_SIZE = 16              # Training batch size
-EPOCHS = 3                   # Training epochs
-MAX_LENGTH = 128             # Sequence length
-LEARNING_RATE = 2e-5         # Default from TrainingArguments
-```
-
-## 📖 Citation
-
-If you use this code in your research, please cite:
-
-```bibtex
-@misc{ensemble-debiasing-nli,
-  author = {Brandon Jerome},
-  title = {Ensemble Debiasing for Natural Language Inference},
-  year = {2024},
-  publisher = {GitHub},
-  url = {<your-repo-url>}
-}
-```
-
 ### References
 
 - McCoy, T., Pavlick, E., & Linzen, T. (2019). Right for the Wrong Reasons: Diagnosing Syntactic Heuristics in Natural Language Inference. *ACL 2019*.
 - Clark, C., Yatskar, M., & Zettlemoyer, L. (2019). Don't Take the Easy Way Out: Ensemble Based Methods for Avoiding Known Dataset Biases. *EMNLP 2019*.
 - Bowman, S. R., et al. (2015). A large annotated corpus for learning natural language inference. *EMNLP 2015*.
 
-## 🤝 Acknowledgments
+## Acknowledgments
 
 - Base framework adapted from University of Texas at Austin CS 378 (NLP)
 - HANS dataset from McCoy et al. (2019)
 - Hugging Face Transformers library
 
-## 📝 License
+## License
 
 This project is available under the MIT License. See individual dataset licenses for SNLI, HANS, and ANLI.
 
