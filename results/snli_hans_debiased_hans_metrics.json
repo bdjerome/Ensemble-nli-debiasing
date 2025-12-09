@@ -1,0 +1,27 @@
+{
+  "overall_accuracy": 1.0,
+  "entailment_accuracy": 1.0,
+  "non_entailment_accuracy": 1.0,
+  "heuristic_accuracies": {
+    "subsequence": 1.0,
+    "lexical_overlap": 1.0,
+    "constituent": 1.0
+  },
+  "confusion_matrix": [
+    [
+      15000,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      15000
+    ]
+  ]
+}

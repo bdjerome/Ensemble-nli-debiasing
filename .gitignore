@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# PyTorch Models (large files)
+*.pth
+*.pt
+*.bin
+*.safetensors
+
+# Model Checkpoints (keep metrics only, ignore model weights)
+results/*/checkpoint-*/
+results/*/pytorch_model.bin
+results/*/model.safetensors
+results/*/*.pth
+# Can keep the final metrics files
+# results/*/*.json
+# results/*/*.txt
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+*.DS_Store
+
+# Personal documents (assignment files, not for GitHub)
+*.docx
+*.doc
+*.pptx
+NLP\ Final\ Project.docx
+NLP_Final_Project.docx
+Peer\ Assesment.docx
+
+# PDF files are ALLOWED (include your report!)
+# *.pdf - commented out to include academic report
+
+# Cleanup checklist (personal)
+CLEANUP_CHECKLIST.md

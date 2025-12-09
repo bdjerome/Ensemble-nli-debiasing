@@ -1,0 +1,22 @@
+{
+  "overall_accuracy": 0.3296875,
+  "entailment_accuracy": 0.10654205607476636,
+  "non_entailment_accuracy": 0.44178403755868545,
+  "confusion_matrix": [
+    [
+      114,
+      587,
+      369
+    ],
+    [
+      67,
+      557,
+      444
+    ],
+    [
+      58,
+      620,
+      384
+    ]
+  ]
+}

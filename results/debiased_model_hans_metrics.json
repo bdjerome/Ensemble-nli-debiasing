@@ -1,0 +1,27 @@
+{
+  "overall_accuracy": 0.5611333333333334,
+  "entailment_accuracy": 0.9592666666666667,
+  "non_entailment_accuracy": 0.163,
+  "heuristic_accuracies": {
+    "subsequence": 0.5101,
+    "lexical_overlap": 0.658,
+    "constituent": 0.5153
+  },
+  "confusion_matrix": [
+    [
+      14389,
+      0,
+      611
+    ],
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      12553,
+      2,
+      2445
+    ]
+  ]
+}
